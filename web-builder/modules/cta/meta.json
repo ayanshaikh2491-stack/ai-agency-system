@@ -1,0 +1,10 @@
+{
+  "name": "Call to Action",
+  "description": "CTA section with compelling copy and button(s) to drive conversions",
+  "style": "modern",
+  "framework": "react",
+  "use_case": "landing/ecommerce/blog",
+  "responsive": true,
+  "props": ["title", "subtitle", "buttonText", "buttonLink", "secondaryButtonText", "secondaryButtonLink", "imageUrl", "className"],
+  "variants": 2
+}

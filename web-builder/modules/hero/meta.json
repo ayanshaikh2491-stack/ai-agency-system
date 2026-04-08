@@ -1,0 +1,10 @@
+{
+  "name": "Hero",
+  "description": "Hero section with title, subtitle, CTA buttons and optional background/image",
+  "style": "modern",
+  "framework": "react",
+  "use_case": "landing/ecommerce/blog",
+  "responsive": true,
+  "props": ["title", "subtitle", "imageUrl", "ctaText", "ctaLink", "backgroundImage", "className"],
+  "variants": 2
+}

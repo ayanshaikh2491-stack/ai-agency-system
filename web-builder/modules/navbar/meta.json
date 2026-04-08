@@ -1,0 +1,10 @@
+{
+  "name": "Navbar",
+  "description": "Navigation bar component with brand name and links",
+  "style": "modern",
+  "framework": "react",
+  "use_case": "landing/ecommerce/blog",
+  "responsive": true,
+  "props": ["brandName", "links", "className"],
+  "variants": 2
+}

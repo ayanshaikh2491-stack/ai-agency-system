@@ -1,0 +1,10 @@
+{
+  "name": "Products Grid",
+  "description": "Product display grid with images, titles, descriptions, prices and badges",
+  "style": "modern",
+  "framework": "react",
+  "use_case": "ecommerce/landing",
+  "responsive": true,
+  "props": ["products", "title", "subtitle", "className"],
+  "variants": 2
+}

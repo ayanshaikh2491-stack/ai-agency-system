@@ -1,0 +1,10 @@
+{
+  "name": "Testimonials",
+  "description": "Testimonials carousel/slider with quotes, author info and images",
+  "style": "modern",
+  "framework": "react",
+  "use_case": "landing/ecommerce/blog",
+  "responsive": true,
+  "props": ["testimonials", "title", "subtitle", "className"],
+  "variants": 1
+}

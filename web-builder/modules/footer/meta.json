@@ -1,0 +1,10 @@
+{
+  "name": "Footer",
+  "description": "Website footer with links, social media and copyright information",
+  "style": "modern",
+  "framework": "react",
+  "use_case": "landing/ecommerce/blog",
+  "responsive": true,
+  "props": ["links", "socialLinks", "copyrightText", "className"],
+  "variants": 2
+}

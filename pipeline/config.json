@@ -1,0 +1,6 @@
+{
+  "project_name": "ai-agency-website",
+  "framework": "react",
+  "backend": "supabase",
+  "deploy": "vercel"
+}

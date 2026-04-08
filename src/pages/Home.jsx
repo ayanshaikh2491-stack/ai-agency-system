@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getProducts, createOrder, createBooking } from '../../lib/supabase';
+import { getProducts, createOrder, createBooking } from '../lib/supabase';
 
 const Home = () => {
   const [products, setProducts] = useState([]);

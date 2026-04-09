@@ -29,7 +29,7 @@ try {
   execSync('git remote get-url origin', { stdio: 'ignore' });
   console.log('Remote origin already exists');
 } catch (error) {
-  const repoUrl = `https://${process.env.GITHUB_TOKEN}@github.com/ai-agency-bro/ai-agency-website.git`;
+  const repoUrl = `https://${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_USERNAME}/${process.env.REPO_NAME}.git`;
   execSync(`git remote add origin ${repoUrl}`, { stdio: 'inherit' });
   console.log('Added remote origin');
 }

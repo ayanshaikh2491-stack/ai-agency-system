@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { getOrders, getBookings } from '../lib/supabase';
 
 const Admin = () => {
   const [orders, setOrders] = useState([]);
@@ -13,24 +13,14 @@ const Admin = () => {
         setLoading(true);
         
         // Fetch all orders
-        const { data: ordersData, error: ordersError } = await supabase
-          .from('orders')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (ordersError) throw ordersError;
+        const ordersData = await getOrders();
         
         // Fetch all bookings
-        const { data: bookingsData, error: bookingsError } = await supabase
-          .from('bookings')
-          .select('*')
-          .order('created_at', { ascending: false });
+        const bookingsData = await getBookings();
         
-        if (bookingsError) throw bookingsError;
-        
-      setOrders(ordersData);
-      setBookings(bookingsData);
-      setError(null);
+        setOrders(ordersData);
+        setBookings(bookingsData);
+        setError(null);
       } catch (err) {
         setError(err.message);
         setOrders([]);
@@ -50,34 +40,36 @@ const Admin = () => {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">Admin Dashboard</h1>
       
-      {/* Orders Section */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">Orders</h2>
-        {orders.length === 0 ? (
-          <div className="text-center py-8">No orders found.</div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Address</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {orders.map(order => (
-                  <tr key={order.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.product_id}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.customer_name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.address}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
+       {/* Orders Section */}
+       <div className="mb-12">
+         <h2 className="text-2xl font-bold mb-4">Orders</h2>
+         {orders.length === 0 ? (
+           <div className="text-center py-8">No orders found.</div>
+         ) : (
+           <div className="overflow-x-auto">
+             <table className="min-w-full divide-y divide-gray-200">
+               <thead className="bg-gray-50">
+                 <tr>
+                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product ID</th>
+                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer Name</th>
+                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Address</th>
+                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created At</th>
+                 </tr>
+               </thead>
+               <tbody className="bg-white divide-y divide-gray-200">
+                 {orders.map(order => (
+                   <tr key={order.id} className="hover:bg-gray-50">
+                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.product_id}</td>
+                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.customer_name}</td>
+                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.address}</td>
+                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{new Date(order.created_at).toLocaleString()}</td>
+                   </tr>
+                 ))}
+               </tbody>
+             </table>
+           </div>
+         )}
+       </div>
       
       {/* Bookings Section */}
       <div>

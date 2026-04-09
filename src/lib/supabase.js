@@ -33,6 +33,16 @@ export async function createOrder(data) {
   }
 }
 
+export async function getOrders() {
+  const { data, error } = await supabase
+    .from('orders')
+    .select('*')
+    .order('created_at', { ascending: false })
+   
+  if (error) throw error
+  return data
+}
+
 export async function createBooking(data) {
   try {
     const { error } = await supabase
@@ -49,4 +59,14 @@ export async function createBooking(data) {
     console.error('Failed to create booking:', error);
     throw error;
   }
+}
+
+export async function getBookings() {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*')
+    .order('created_at', { ascending: false })
+   
+  if (error) throw error
+  return data
 }

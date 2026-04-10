@@ -1,0 +1,9 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "description": "Vercel serverless API functions",
+    "main": "health.js",
+    "dependencies": {
+        "nodemailer": "^6.9.7"
+    }
+}
